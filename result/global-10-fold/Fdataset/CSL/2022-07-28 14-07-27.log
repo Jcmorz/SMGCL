@@ -1,0 +1,74 @@
+[07/28 14:07:27][INFO] WBNCF:   41: terminal cmd: python E:/高子皓/研究生/我的工作/1.CSL/CSL-main/main.py
+[07/28 14:07:27][INFO] WBNCF:   42: log file: result\global-10-fold\Fdataset\CSL\2022-07-28 14-07-27.log
+[07/28 14:07:27][INFO] WBNCF:  131: {'alpha': 0.5,
+ 'comment': 'result',
+ 'dataset_name': 'Fdataset',
+ 'dataset_type': None,
+ 'debug': True,
+ 'disease_feature_topk': 20,
+ 'disease_idx': None,
+ 'disease_neighbor_num': 4,
+ 'dropout': 0.4,
+ 'drug_feature_topk': 20,
+ 'drug_idx': None,
+ 'drug_neighbor_num': 4,
+ 'embedding_dim': 128,
+ 'epochs': 1,
+ 'gamma': 2.0,
+ 'get_dropout': 0.0,
+ 'global_test_all_zero': False,
+ 'gpus': 0,
+ 'hidden_dims': (128, 64),
+ 'lamda': 0.8,
+ 'log_dir': 'result\\global-10-fold\\Fdataset\\CSL',
+ 'loss_fn': 'focal',
+ 'lr': 0.0005,
+ 'model': 'CSL',
+ 'n_disease': 313,
+ 'n_drug': 593,
+ 'n_splits': 10,
+ 'negative_slope': 0.01,
+ 'neighbor_embedding_dim': 64,
+ 'pos_weight': 95.02121055354371,
+ 'profiler': False,
+ 'seed': 918,
+ 'separate': False,
+ 'size_u': 593,
+ 'size_v': 313,
+ 'split_mode': 'global',
+ 'time_stamp': 'Thu Jul 28 14:07:27 2022',
+ 'train_fill_unknown': True}
+[07/28 14:07:28][INFO] WBNCF:  165: CSL(
+  (drug_embedding_compress): Linear(in_features=593, out_features=128, bias=False)
+  (disease_embedding_compress): Linear(in_features=313, out_features=128, bias=False)
+  (bgcn_encoder1): NeighborEmbedding1(
+    (shutcut): Linear(in_features=128, out_features=64, bias=True)
+    (bgnn): BGCNA(128, 64)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (bgcn_encoder2): NeighborEmbedding2(
+    (shutcut): Linear(in_features=128, out_features=64, bias=True)
+    (bgnn): BGCNA(128, 64)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (drug_att_encoder): GraphAttentionLayer (593 -> 64)
+  (disease_att_encoder): GraphAttentionLayer (313 -> 64)
+  (interaction_encoder): InteractionEmbedding(
+    (drug_project): Linear(in_features=593, out_features=128, bias=False)
+    (disease_project): Linear(in_features=313, out_features=128, bias=False)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (decoder): InteractionDecoder(
+    (decoder): Sequential(
+      (0): Linear(in_features=256, out_features=128, bias=True)
+      (1): ReLU(inplace=True)
+      (2): Dropout(p=0.4, inplace=False)
+      (3): Linear(in_features=128, out_features=64, bias=True)
+      (4): ReLU(inplace=True)
+      (5): Dropout(p=0.4, inplace=False)
+      (6): Linear(in_features=64, out_features=1, bias=True)
+      (7): Sigmoid()
+    )
+  )
+)
+[07/28 14:07:28][INFO] WBNCF:  167: begin train fold 0/10

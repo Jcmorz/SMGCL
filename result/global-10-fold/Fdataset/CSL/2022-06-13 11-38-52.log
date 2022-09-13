@@ -1,0 +1,141 @@
+[06/13 11:38:52][INFO] WBNCF:   41: terminal cmd: python E:/高子皓/研究生/我的工作/协同对比自监督学习图卷积网络用于药物-疾病预测/CSL-main/main.py
+[06/13 11:38:52][INFO] WBNCF:   42: log file: result\global-10-fold\Fdataset\CSL\2022-06-13 11-38-52.log
+[06/13 11:38:52][INFO] WBNCF:  131: {'alpha': 0.5,
+ 'comment': 'result',
+ 'dataset_name': 'Fdataset',
+ 'dataset_type': None,
+ 'debug': False,
+ 'disease_feature_topk': 20,
+ 'disease_idx': None,
+ 'disease_neighbor_num': 4,
+ 'dropout': 0.4,
+ 'drug_feature_topk': 20,
+ 'drug_idx': None,
+ 'drug_neighbor_num': 4,
+ 'embedding_dim': 128,
+ 'epochs': 64,
+ 'gamma': 2.0,
+ 'get_dropout': 0.0,
+ 'global_test_all_zero': False,
+ 'gpus': 0,
+ 'hidden_dims': (128, 64),
+ 'lamda': 0.8,
+ 'log_dir': 'result\\global-10-fold\\Fdataset\\CSL',
+ 'loss_fn': 'focal',
+ 'lr': 0.0005,
+ 'model': 'CSL',
+ 'n_disease': 313,
+ 'n_drug': 593,
+ 'n_splits': 10,
+ 'negative_slope': 0.01,
+ 'neighbor_embedding_dim': 64,
+ 'pos_weight': 95.02121055354371,
+ 'profiler': False,
+ 'seed': 918,
+ 'separate': False,
+ 'size_u': 593,
+ 'size_v': 313,
+ 'split_mode': 'global',
+ 'time_stamp': 'Mon Jun 13 11:38:52 2022',
+ 'train_fill_unknown': True}
+[06/13 11:38:52][INFO] WBNCF:  165: CSL(
+  (drug_embedding_compress): Linear(in_features=593, out_features=128, bias=False)
+  (disease_embedding_compress): Linear(in_features=313, out_features=128, bias=False)
+  (bgcn_encoder): NeighborEmbedding(
+    (shutcut): Linear(in_features=128, out_features=64, bias=True)
+    (bgnn): BGCNA(128, 64)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (drug_bgcn_encoder): NeighborEmbedding(
+    (shutcut): Linear(in_features=593, out_features=64, bias=True)
+    (bgnn): BGCNA(593, 64)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (disease_bgcn_encoder): NeighborEmbedding(
+    (shutcut): Linear(in_features=313, out_features=64, bias=True)
+    (bgnn): BGCNA(313, 64)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (drug_att_encoder): GraphAttentionLayer (593 -> 64)
+  (disease_att_encoder): GraphAttentionLayer (313 -> 64)
+  (interaction_encoder): InteractionEmbedding(
+    (drug_project): Linear(in_features=593, out_features=128, bias=False)
+    (disease_project): Linear(in_features=313, out_features=128, bias=False)
+    (dropout): Dropout(p=0.4, inplace=False)
+  )
+  (decoder): InteractionDecoder(
+    (decoder): Sequential(
+      (0): Linear(in_features=256, out_features=128, bias=True)
+      (1): ReLU(inplace=True)
+      (2): Dropout(p=0.4, inplace=False)
+      (3): Linear(in_features=128, out_features=64, bias=True)
+      (4): ReLU(inplace=True)
+      (5): Dropout(p=0.4, inplace=False)
+      (6): Linear(in_features=64, out_features=1, bias=True)
+      (7): Sigmoid()
+    )
+  )
+)
+[06/13 11:38:52][INFO] WBNCF:  167: begin train fold 0/10
+[06/13 11:45:41][INFO] WBNCF:  169: end train fold 0/10
+[06/13 11:45:42][INFO] WBNCF:   77: eval time cost: 0.5166807174682617
+[06/13 11:45:42][INFO] WBNCF:   85: save time cost: 0.016903400421142578
+[06/13 11:45:42][INFO] WBNCF:  180: 0/10 folds: {'aupr': 0.5453254866228214, 'auroc': 0.9328482524515965, 'lagcn_aupr': 0.5462354474987284, 'lagcn_auc': 0.9328601904937015, 'lagcn_f1_score': 0.56790125, 'lagcn_accuracy': 0.9924577, 'lagcn_recall': 0.4742268, 'lagcn_specificity': 0.9979312, 'lagcn_precision': 0.7076923}
+[06/13 11:45:42][INFO] WBNCF:  181: 0/10 folds time cost: 409.7834436893463
+[06/13 11:45:42][INFO] WBNCF:  167: begin train fold 1/10
+[06/13 11:52:21][INFO] WBNCF:  169: end train fold 1/10
+[06/13 11:52:22][INFO] WBNCF:   77: eval time cost: 0.557793140411377
+[06/13 11:52:22][INFO] WBNCF:   85: save time cost: 0.0
+[06/13 11:52:22][INFO] WBNCF:  180: 1/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 11:52:22][INFO] WBNCF:  181: 1/10 folds time cost: 399.98169231414795
+[06/13 11:52:22][INFO] WBNCF:  167: begin train fold 2/10
+[06/13 11:59:23][INFO] WBNCF:  169: end train fold 2/10
+[06/13 11:59:24][INFO] WBNCF:   77: eval time cost: 0.5350420475006104
+[06/13 11:59:24][INFO] WBNCF:   85: save time cost: 0.015586137771606445
+[06/13 11:59:24][INFO] WBNCF:  180: 2/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 11:59:24][INFO] WBNCF:  181: 2/10 folds time cost: 422.3568902015686
+[06/13 11:59:25][INFO] WBNCF:  167: begin train fold 3/10
+[06/13 12:06:13][INFO] WBNCF:  169: end train fold 3/10
+[06/13 12:06:14][INFO] WBNCF:   77: eval time cost: 0.7539913654327393
+[06/13 12:06:14][INFO] WBNCF:   85: save time cost: 0.0
+[06/13 12:06:14][INFO] WBNCF:  180: 3/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:06:14][INFO] WBNCF:  181: 3/10 folds time cost: 409.4262173175812
+[06/13 12:06:14][INFO] WBNCF:  167: begin train fold 4/10
+[06/13 12:13:08][INFO] WBNCF:  169: end train fold 4/10
+[06/13 12:13:09][INFO] WBNCF:   77: eval time cost: 0.5929479598999023
+[06/13 12:13:09][INFO] WBNCF:   85: save time cost: 0.015619516372680664
+[06/13 12:13:09][INFO] WBNCF:  180: 4/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:13:09][INFO] WBNCF:  181: 4/10 folds time cost: 415.3400082588196
+[06/13 12:13:09][INFO] WBNCF:  167: begin train fold 5/10
+[06/13 12:19:44][INFO] WBNCF:  169: end train fold 5/10
+[06/13 12:19:45][INFO] WBNCF:   77: eval time cost: 0.56095290184021
+[06/13 12:19:45][INFO] WBNCF:   85: save time cost: 0.0018122196197509766
+[06/13 12:19:45][INFO] WBNCF:  180: 5/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:19:45][INFO] WBNCF:  181: 5/10 folds time cost: 396.2040214538574
+[06/13 12:19:45][INFO] WBNCF:  167: begin train fold 6/10
+[06/13 12:26:22][INFO] WBNCF:  169: end train fold 6/10
+[06/13 12:26:23][INFO] WBNCF:   77: eval time cost: 0.5311596393585205
+[06/13 12:26:23][INFO] WBNCF:   85: save time cost: 0.0
+[06/13 12:26:23][INFO] WBNCF:  180: 6/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:26:23][INFO] WBNCF:  181: 6/10 folds time cost: 397.7669801712036
+[06/13 12:26:23][INFO] WBNCF:  167: begin train fold 7/10
+[06/13 12:33:11][INFO] WBNCF:  169: end train fold 7/10
+[06/13 12:33:12][INFO] WBNCF:   77: eval time cost: 0.7194218635559082
+[06/13 12:33:12][INFO] WBNCF:   85: save time cost: 0.0
+[06/13 12:33:12][INFO] WBNCF:  180: 7/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:33:12][INFO] WBNCF:  181: 7/10 folds time cost: 409.1537582874298
+[06/13 12:33:12][INFO] WBNCF:  167: begin train fold 8/10
+[06/13 12:39:54][INFO] WBNCF:  169: end train fold 8/10
+[06/13 12:39:55][INFO] WBNCF:   77: eval time cost: 0.5467455387115479
+[06/13 12:39:55][INFO] WBNCF:   85: save time cost: 0.015632152557373047
+[06/13 12:39:55][INFO] WBNCF:  180: 8/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:39:55][INFO] WBNCF:  181: 8/10 folds time cost: 402.80099534988403
+[06/13 12:39:55][INFO] WBNCF:  167: begin train fold 9/10
+[06/13 12:46:29][INFO] WBNCF:  169: end train fold 9/10
+[06/13 12:46:30][INFO] WBNCF:   77: eval time cost: 0.5466117858886719
+[06/13 12:46:30][INFO] WBNCF:   85: save time cost: 0.0028162002563476562
+[06/13 12:46:30][INFO] WBNCF:  180: 9/10 folds: {'aupr': 0.5229043641288132, 'auroc': 0.9251850484033192, 'lagcn_aupr': 0.5218303447776855, 'lagcn_auc': 0.9251738339078526, 'lagcn_f1_score': 0.5185185, 'lagcn_accuracy': 0.99159575, 'lagcn_recall': 0.4329897, 'lagcn_specificity': 0.99749565, 'lagcn_precision': 0.64615387}
+[06/13 12:46:30][INFO] WBNCF:  181: 9/10 folds time cost: 394.38472509384155
+[06/13 12:46:30][INFO] WBNCF:  188: total time cost:4057.19873213768
+[06/13 12:46:30][INFO] WBNCF:  203: final Fdataset-global-10-fold-auroc:0.9258438504660729-aupr:0.523396620328319
+[06/13 12:46:30][INFO] WBNCF:  219: final results: {'aupr': 0.523396620328319, 'auroc': 0.9258438504660729, 'lagcn_aupr': None, 'lagcn_auc': None, 'lagcn_f1_score': None, 'lagcn_accuracy': None, 'lagcn_recall': None, 'lagcn_specificity': None, 'lagcn_precision': None}
